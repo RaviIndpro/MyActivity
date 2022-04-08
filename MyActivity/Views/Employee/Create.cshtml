@@ -1,0 +1,34 @@
+﻿@model Employee
+<form method ="post" >
+    
+   <h2>
+       Add Employee details
+   </h2>
+   <label asp-for ="FirstName"></label>
+   <input asp-for ="FirstName" class ="form-control" />
+   <span asp-validation-for="FirstName" class ="text-danger"></span><br />
+
+        <label asp-for ="LastName"></label>
+   <input asp-for ="LastName" class ="form-control" />
+   <span asp-validation-for="LastName" class ="text-danger"></span><br />
+
+        <label asp-for ="EmailId"></label>
+   <input asp-for ="EmailId" class ="form-control" />
+   <span asp-validation-for="EmailId" class ="text-danger"></span><br />
+
+        <label asp-for ="MobileNo"></label>
+   <input asp-for ="MobileNo" class ="form-control" />
+      <span asp-validation-for="MobileNo" class ="text-danger"></span><br />
+
+   <br />
+
+   <button ty ="submit" class= "btn btn-primary">
+       Create
+   </button>
+   <a asp-controller="Employee" asp-action="Index" class = "btn btn-secondary">
+       Back
+   </a>
+</form>
+
+
+

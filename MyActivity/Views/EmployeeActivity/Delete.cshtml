@@ -1,0 +1,20 @@
+﻿@model EmployeeActivity
+
+<form method ="post" asp-action ="DeletePost">
+    <input asp-for= "Id" hidden />
+   <h2>
+       Delete Activity
+   </h2>
+   <label asp-for ="ActivityName"></label>
+   <input asp-for ="ActivityName" class ="form-control" />
+   <span asp-validation-for="ActivityName" class ="text-danger">
+
+   </span><br />
+   <button type ="submit" class= "btn btn-danger" 
+   onclick="return confirm('Are you sure you want to delete')">
+       Delete
+   </button>
+   <a asp-controller="EmployeeActivity" asp-action="Index" class = "btn btn-secondary">
+       Back
+   </a>
+</form>

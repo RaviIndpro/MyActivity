@@ -1,0 +1,23 @@
+﻿@model ActivityEnrollment
+
+<form method ="post">
+   <h2>
+        Edit Employee's Activity
+   </h2><br />
+  
+    <select asp-for ="EmployeeId" asp-items ="@ViewBag.TypeDropDown">
+           <option selected>--Select Employee--</option>
+       </select>
+
+        <select asp-for ="EmployeeActivityId" asp-items ="@ViewBag.TypeDropDown2">
+           <option selected>--Select Employee Activity--</option>
+       </select>
+       <br /><br />
+
+   <button type ="submit" class= "btn btn-primary">
+       Update
+   </button>
+   <a asp-controller="ActivityEnrollment" asp-action="Index" class = "btn btn-secondary">
+       Back
+   </a>
+</form>

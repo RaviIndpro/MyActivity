@@ -1,0 +1,87 @@
+﻿@using MyActivity.ViewModel
+@*@model IEnumerable<Employee>*@
+@{
+    ViewData["Title"] = "Index";
+}
+        
+<partial name ="_Notification" />
+
+<h2>Employees List</h2> <br />
+       
+
+<a asp-controller ="Employee" asp-action ="Create" class = "btn btn-primary">
+    Add new employee
+</a>
+<br />
+<br />
+
+
+
+<table table-bordered width = "100%">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+             <th>
+                 
+            </th>
+            <th>
+                Email Id
+            </th>
+            <th>
+                Mobile No
+            </th>
+            <th>
+
+            </th>
+             <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                
+               <td width ="15%">
+                   @obj.FirstName
+               </td> 
+            
+            
+                <td width = "15%">
+                    @obj.LastName
+                </td>
+                 <td width = "20%">
+                  
+                    @obj.ActivityName
+                
+                </td>
+                 <td width = "20%">
+                    @obj.EmailId
+                </td>
+                 <td width = "20%">
+                    @obj.MobileNo
+                </td>
+                <td width = "15%">
+                   
+                    <a asp-controller = "Employee" asp-action ="Edit" asp-route-id ="@obj.Id" class ="btn btn-primary">Edit</a>
+                </td>
+                <td width = "15%">
+                   
+                    <a asp-controller = "Employee" asp-action ="Delete" asp-route-id ="@obj.Id" class ="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+
+            
+        }
+
+    </tbody>
+</table>
+
+
+

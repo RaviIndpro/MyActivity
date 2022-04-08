@@ -1,0 +1,78 @@
+﻿@using MyActivity.ViewModel
+@*@model IEnumerable<ActivityEnrollment>
+*@@{
+    ViewData["Title"] = "Index";
+}
+<partial name ="_Notification" />
+
+<h2>Employees Activity</h2> <br />
+<a asp-controller ="ActivityEnrollment" asp-action ="Create" class = "btn btn-primary">
+    Add employee Activity
+</a>
+<br />
+<br />
+
+
+
+<table table-bordered width = "100%">
+    <thead>
+        <tr>
+            <th>
+                
+            </th>
+            <th>
+                Employee
+            </th>
+            <th>
+                Activity
+            </th>
+             <th>
+                
+            </th>
+             <th>
+                
+            </th>
+                    
+        </tr>
+    </thead>
+    <tbody>
+     @foreach(var obj in Model)
+        {
+            <tr>
+                 <td width ="20">
+                  *
+               </td> 
+
+               @*
+                   if( r2 != Employee.FirstName)
+                   {*@
+                       <td width ="20">
+                        @obj.EmployeeName
+                       @* var r2 = Employee.FirstName*@
+                        </td>
+                  @* }*@
+                 
+                
+            
+            
+                <td width = "20%">
+                    @obj.ActivityName
+                </td>
+                
+
+                <td width = "20%">
+                   
+                    <a asp-controller = "ActivityEnrollment" asp-action ="Edit" asp-route-id ="@obj.Id" class ="btn btn-primary">Edit</a>
+                </td>
+                <td width = "20%">
+                   
+                    <a asp-controller = "ActivityEnrollment" asp-action ="Delete" asp-route-id ="@obj.Id" class ="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+         
+
+
+        }
+
+    </tbody>
+    </table>
