@@ -1,0 +1,6 @@
+2022-04-13 11:51:12.9911|0|DEBUG|Program|init main |url: |action: |Program.<Main>$
+2022-04-13 11:51:14.2169|0|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. |url: |action: |Microsoft.Extensions.Hosting.Internal.ConsoleLifetime.OnApplicationStarted
+2022-04-13 11:51:14.2279|0|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development |url: |action: |Microsoft.Extensions.Hosting.Internal.ConsoleLifetime.OnApplicationStarted
+2022-04-13 11:51:14.2279|0|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\ |url: |action: |Microsoft.Extensions.Hosting.Internal.ConsoleLifetime.OnApplicationStarted
+2022-04-13 11:51:18.9070|0|INFO|MyActivity.Controllers.HomeController|Hi, it's Employee Controller |url: https://localhost/Home|action: Index|MyActivity.Controllers.HomeController..ctor
+2022-04-13 11:51:28.5307|0|INFO|MyActivity.Controllers.ActivityEnrollmentController|CREATE POST - Duplicate Activity! |url: https://localhost/ActivityEnrollment/Create|action: Create|MyActivity.Controllers.ActivityEnrollmentController.Create

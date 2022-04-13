@@ -9,11 +9,20 @@ namespace MyActivity.Controllers
 {
     public class ActivityEnrollmentController : Controller
     {
+        private readonly ILogger<ActivityEnrollmentController> _logger;
+
         private readonly ApplicationDbContext _db;
 
-        public ActivityEnrollmentController(ApplicationDbContext db)
+
+        //public ActivityEnrollmentController(ApplicationDbContext db)
+        //{
+        //    _db = db;
+        //}
+        public ActivityEnrollmentController(ApplicationDbContext db, ILogger<ActivityEnrollmentController> logger)
         {
             _db = db;
+            _logger = logger;
+            _logger.LogDebug(1, "NLog injected Enrollments Controller");
         }
         public IActionResult Index()
         {
@@ -82,8 +91,9 @@ namespace MyActivity.Controllers
                     else
                     {
                         ViewBag.Duplicate1 = "This Activity is already selected";
-                        
-                      
+                        _logger.LogInformation("CREATE POST - Duplicate Activity!");
+
+
                     }
 
 

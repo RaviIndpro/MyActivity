@@ -534,3 +534,7 @@ C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\obj\Debug\net6.0\refint\MyAct
 C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\obj\Debug\net6.0\MyActivity.pdb
 C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\obj\Debug\net6.0\MyActivity.genruntimeconfig.cache
 C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\obj\Debug\net6.0\ref\MyActivity.dll
+C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\bin\Debug\net6.0\nlog.config
+C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\bin\Debug\net6.0\NLog.dll
+C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\bin\Debug\net6.0\NLog.Extensions.Logging.dll
+C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\bin\Debug\net6.0\NLog.Web.AspNetCore.dll

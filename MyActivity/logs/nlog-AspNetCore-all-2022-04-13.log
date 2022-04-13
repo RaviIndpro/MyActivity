@@ -1,0 +1,67 @@
+2022-04-13 11:51:12.9911|0|DEBUG|Program|init main 
+2022-04-13 11:51:14.2169|0|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2022-04-13 11:51:14.2279|0|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2022-04-13 11:51:14.2279|0|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\kittu\Source\Repos\MyActivity4\MyActivity\ 
+2022-04-13 11:51:18.9070|0|INFO|MyActivity.Controllers.HomeController|Hi, it's Employee Controller 
+2022-04-13 11:51:20.5846|10403|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 6.0.3 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: None 
+2022-04-13 11:51:21.2668|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[FirstName], [t0].[ActivityName], [t0].[Id], [t0].[Id0], [t0].[Id1]
+FROM (
+    SELECT [e].[FirstName]
+    FROM [ActivityEnrollments] AS [a]
+    INNER JOIN [Employees] AS [e] ON [a].[EmployeeId] = [e].[Id]
+    GROUP BY [e].[FirstName]
+) AS [t]
+LEFT JOIN (
+    SELECT [e1].[ActivityName], [a0].[Id], [e0].[Id] AS [Id0], [e1].[Id] AS [Id1], [e0].[FirstName]
+    FROM [ActivityEnrollments] AS [a0]
+    INNER JOIN [Employees] AS [e0] ON [a0].[EmployeeId] = [e0].[Id]
+    INNER JOIN [EmployeeActivities] AS [e1] ON [a0].[EmployeeActivityId] = [e1].[Id]
+) AS [t0] ON [t].[FirstName] = [t0].[FirstName]
+ORDER BY [t].[FirstName], [t0].[Id], [t0].[Id0] 
+2022-04-13 11:51:22.8990|10403|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 6.0.3 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: None 
+2022-04-13 11:51:22.9685|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [e].[FirstName] AS [Text], CONVERT(varchar(11), [e].[Id]) AS [Value]
+FROM [Employees] AS [e] 
+2022-04-13 11:51:22.9885|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [e].[ActivityName] AS [Text], CONVERT(varchar(11), [e].[Id]) AS [Value]
+FROM [EmployeeActivities] AS [e] 
+2022-04-13 11:51:24.0641|10403|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 6.0.3 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: None 
+2022-04-13 11:51:24.0641|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[FirstName], [t0].[ActivityName], [t0].[Id], [t0].[Id0], [t0].[Id1]
+FROM (
+    SELECT [e].[FirstName]
+    FROM [ActivityEnrollments] AS [a]
+    INNER JOIN [Employees] AS [e] ON [a].[EmployeeId] = [e].[Id]
+    GROUP BY [e].[FirstName]
+) AS [t]
+LEFT JOIN (
+    SELECT [e1].[ActivityName], [a0].[Id], [e0].[Id] AS [Id0], [e1].[Id] AS [Id1], [e0].[FirstName]
+    FROM [ActivityEnrollments] AS [a0]
+    INNER JOIN [Employees] AS [e0] ON [a0].[EmployeeId] = [e0].[Id]
+    INNER JOIN [EmployeeActivities] AS [e1] ON [a0].[EmployeeActivityId] = [e1].[Id]
+) AS [t0] ON [t].[FirstName] = [t0].[FirstName]
+ORDER BY [t].[FirstName], [t0].[Id], [t0].[Id0] 
+2022-04-13 11:51:25.3139|10403|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 6.0.3 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: None 
+2022-04-13 11:51:25.3139|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [e].[FirstName] AS [Text], CONVERT(varchar(11), [e].[Id]) AS [Value]
+FROM [Employees] AS [e] 
+2022-04-13 11:51:25.3139|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [e].[ActivityName] AS [Text], CONVERT(varchar(11), [e].[Id]) AS [Value]
+FROM [EmployeeActivities] AS [e] 
+2022-04-13 11:51:28.4897|10403|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 6.0.3 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: None 
+2022-04-13 11:51:28.5307|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (20ms) [Parameters=[@__obj_EmployeeId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [ActivityEnrollments] AS [a]
+WHERE [a].[EmployeeId] = @__obj_EmployeeId_0 
+2022-04-13 11:51:28.5307|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@__obj_EmployeeId_0='?' (DbType = Int32), @__obj_EmployeeActivityId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [ActivityEnrollments] AS [a]
+WHERE ([a].[EmployeeId] = @__obj_EmployeeId_0) AND ([a].[EmployeeActivityId] = @__obj_EmployeeActivityId_1) 
+2022-04-13 11:51:28.5307|0|INFO|MyActivity.Controllers.ActivityEnrollmentController|CREATE POST - Duplicate Activity! 
+2022-04-13 11:51:28.5467|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [e].[FirstName] AS [Text], CONVERT(varchar(11), [e].[Id]) AS [Value]
+FROM [Employees] AS [e] 
+2022-04-13 11:51:28.5467|20101|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [e].[ActivityName] AS [Text], CONVERT(varchar(11), [e].[Id]) AS [Value]
+FROM [EmployeeActivities] AS [e] 

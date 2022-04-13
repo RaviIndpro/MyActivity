@@ -1,6 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using MyActivity.Data;
 using Microsoft.OpenApi.Models;
+using NLog;
+using NLog.Web;
+
+var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+logger.Debug("init main");
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +15,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
 builder.Configuration.GetConnectionString("DefaultConnection")
 ));
+
+// NLog: Setup NLog for Dependency injection
+builder.Logging.ClearProviders();
+builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+builder.Host.UseNLog();
+
 builder.Services.AddRazorPages();
 builder.Services.AddSwaggerGen();
 
