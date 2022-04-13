@@ -25,6 +25,7 @@ namespace MyActivity.Controllers
         public IActionResult Error()
         {
             // Retrieve the exception Details
+            //test
             var exceptionHandlerPathFeature =
                 HttpContext.Features.Get<IExceptionHandlerPathFeature>();
             // LogError() method logs the exception under Error category in the log
