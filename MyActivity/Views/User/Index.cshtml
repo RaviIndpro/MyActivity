@@ -1,0 +1,33 @@
+﻿
+@*@{
+    ViewData["Title"] = "Index";
+}*@
+        
+<partial name ="_Notification" />
+
+<h2>User List</h2> <br />
+       
+
+<div class ="col-6 text right">
+    <a class ="btn btn-primary" asp-area="Identity" asp-page ="/Account/Register">
+        &nbsp; Create New User </a>
+
+</div>
+
+<div class ="p-4 border rounded">
+    <table id ="tbldata" style ="width:100%">
+        <thead class ="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone </th>
+                <th>Role</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts
+{
+    <script src ="~/js/user.js"></script>
+}
