@@ -1,0 +1,34 @@
+﻿@model VenueEnrollment
+
+<form method ="post">
+   <h2>
+        Activity Venue
+   </h2><br />
+
+ @* @Html.ListBoxFor(Model => Model.EmployeeActivityId,
+   new MultiSelectList(Model.ActivityList, "Activity"),
+   new{id = "multipledropdown",multiple="multiple"}  )
+  *@
+    <select asp-for ="EmployeeActivityId" asp-items ="@ViewBag.TypeDropDown">
+           <option selected>--Select Activity--</option>
+       </select>
+
+        <select asp-for ="VenueId" asp-items ="@ViewBag.TypeDropDown2">
+           <option selected>--Select Venue--</option>
+       </select>
+      
+       <p style = "color:red;">
+           @Html.Label("",Convert.ToString((string)ViewBag.Duplicate1))
+       </p> 
+        <p style = "color:red;">
+           @Html.Label("",Convert.ToString((string)ViewBag.Duplicate2))
+       </p>
+       <br /><br />
+
+   <button type ="submit" class= "btn btn-primary">
+       Create
+   </button>
+   <a asp-controller="VenueEnrollment" asp-action="Index" class = "btn btn-secondary">
+       Back
+   </a>
+</form>

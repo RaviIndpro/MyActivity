@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Venue>
+@{
+    ViewData["Title"] = "Index";
+}
+<partial name ="_Notification" />
+
+<h1>Venue List</h1> <br />
+<a asp-controller ="Venue" asp-action ="Create" class = "btn btn-primary">
+    Add new Venue
+</a>
+<br />
+<br />
+
+
+
+<table table-bordered width = "100%">
+    <thead>
+        <tr>
+            <th>
+                Venue
+            </th>
+             <th>
+                
+            </th>
+             <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width = "60%">
+                    @obj.StadiumName
+                </td>
+                 <td width = "15%">
+                   
+                    <a asp-controller = "Venue" asp-action ="Edit" asp-route-id ="@obj.Id" class ="btn btn-primary">Edit</a>
+                </td>
+                <td width = "15%">
+                   
+                    <a asp-controller = "Venue" asp-action ="Delete" asp-route-id ="@obj.Id" class ="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+
+            
+        }
+
+    </tbody>
+</table>
+<br /><br />
+<a asp-controller ="VenueEnrollment" asp-action ="Index" class = "btn btn-secondary">
+    Back
+</a>

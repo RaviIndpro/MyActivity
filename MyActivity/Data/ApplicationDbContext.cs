@@ -14,6 +14,8 @@ namespace MyActivity.Data
         public DbSet<EmployeeActivity> EmployeeActivities { get; set; }
         public DbSet<ActivityEnrollment> ActivityEnrollments { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Venue> Venues { get; set; }
+        public DbSet<VenueEnrollment> VenueEnrollments { get; set; }
 
     }
 }

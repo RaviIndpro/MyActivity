@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyActivity.Data;
@@ -24,15 +25,25 @@ namespace MyActivity.Controllers
             _logger = logger;
             _logger.LogDebug(1, "NLog injected Enrollments Controller");
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            var objEmployeeActivityList = _db.ActivityEnrollments.Include(x=>x.Employee).Include(x=>x.EmployeeActivity)
-                .GroupBy(c=> c.Employee.FirstName)
-                .Select(d=>new ActivityEnrollment
+            //var objEmployeeActivityList = _db.ActivityEnrollments.Include(x=>x.Employee).Include(x=>x.EmployeeActivity)
+            //    .GroupBy(c=> c.Employee.FirstName)
+            //    .Select(d=>new ActivityEnrollment
+            //    {
+            //    //    Id= x.Id,
+            //        EmployeeName = d.Key,
+            //        ActivityName = string.Join(", ", d.Select(e=>e.EmployeeActivity.ActivityName))
+            //    });
+
+            var objEmployeeActivityList = _db.ActivityEnrollments.Include(x => x.ApplicationUser).Include(x => x.EmployeeActivity)
+                .GroupBy(c => c.ApplicationUser.Name)
+                .Select(d => new ActivityEnrollment
                 {
-                //    Id= x.Id,
+                    //    Id= x.Id,
                     EmployeeName = d.Key,
-                    ActivityName = string.Join(", ", d.Select(e=>e.EmployeeActivity.ActivityName))
+                    ActivityName = string.Join(", ", d.Select(e => e.EmployeeActivity.ActivityName))
                 });
 
             return View(objEmployeeActivityList);
@@ -46,11 +57,19 @@ namespace MyActivity.Controllers
         //GET
         public IActionResult Create()
         {
-            IEnumerable<SelectListItem> TypeDropDown = _db.Employees.Select(i => new SelectListItem
+            //IEnumerable<SelectListItem> TypeDropDown = _db.Employees.Select(i => new SelectListItem
+            //{
+            //    Text = i.FirstName,
+            //    Value = i.Id.ToString()
+            //});
+
+            IEnumerable<SelectListItem> TypeDropDown = _db.ApplicationUsers.Select(i => new SelectListItem
             {
-                Text = i.FirstName,
+                Text = i.Name,
                 Value = i.Id.ToString()
             });
+
+
             IEnumerable<SelectListItem> TypeDropDown2 = _db.EmployeeActivities.Select(i => new SelectListItem
             {
                 Text = i.ActivityName,
@@ -72,14 +91,14 @@ namespace MyActivity.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ActivityEnrollment obj)
         {
-            if (ModelState.IsValid)
-            {
-                var count = _db.ActivityEnrollments.Where(x => x.EmployeeId == obj.EmployeeId).Count();
-                
+            //if (ModelState.IsValid)
+            //{
+            //var count = _db.ActivityEnrollments.Where(x => x.ApplicationUser.UserId == obj.ApplicationUser.UserId).Count();
+            var count = 1;
 
                 if (count < 4)
                 {
-                    var count2 = _db.ActivityEnrollments.Where(x => x.EmployeeId == obj.EmployeeId 
+                    var count2 = _db.ActivityEnrollments.Where(x => x.ApplicationUserId == obj.ApplicationUserId
                     && x.EmployeeActivityId == obj.EmployeeActivityId).Count();
                     if (count2 == 0)
                     {
@@ -104,10 +123,10 @@ namespace MyActivity.Controllers
                 }
 
 
-            }
-            IEnumerable<SelectListItem> TypeDropDown = _db.Employees.Select(i => new SelectListItem
+            //}
+            IEnumerable<SelectListItem> TypeDropDown = _db.ApplicationUsers.Select(i => new SelectListItem
             {
-                Text = i.FirstName,
+                Text = i.Name,
                 Value = i.Id.ToString()
             });
             IEnumerable<SelectListItem> TypeDropDown2 = _db.EmployeeActivities.Select(i => new SelectListItem

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyActivity.Data;
 using MyActivity.Models;
@@ -10,32 +11,45 @@ namespace MyActivity.Controllers
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public UserController(ApplicationDbContext db)
+        public UserController(ApplicationDbContext db,UserManager<IdentityUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
 
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        //GET
-        [HttpGet]
-
-        public IActionResult GetAll()
         {
             var userList = _db.ApplicationUsers.ToList();
             var userRole = _db.UserRoles.ToList();
             var roles = _db.Roles.ToList();
             foreach (var user in userList)
             {
-                var roleId = userRole.FirstOrDefault(u => u.UserId == user.Id).RoleId;
-                user.Role = roles.FirstOrDefault(u => u.Id == roleId).Name;
+                var role = userRole.FirstOrDefault(u => u.UserId == user.Id);
+                if(role == null)
+                {
+                    user.Role = "None";
+                }
+                else
+                {
+                    user.Role = roles.FirstOrDefault(u => u.Id == role.RoleId).Name;
+                }
+                
             }
-            return Json(new {data = userList});
+            return View(userList);
         }
+
+        //GET
+        //[HttpGet]
+
+        //public IActionResult GetAll()
+        //{
+            
+            
+           
+        //    return Json(new {data = userList});
+        //}
     }
 }

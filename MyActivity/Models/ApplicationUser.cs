@@ -6,10 +6,15 @@ namespace MyActivity.Models
 {
     public class ApplicationUser :IdentityUser
     {
+        //[Key]
+        //public int AppUserId { get; set; }
         [Required]
         public string Name { get; set; }
-        //public string City { get; set; }
+        [NotMapped]
+        public string RoleId { get; set; }
         [NotMapped]
         public string Role { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UserId { get; set; }
     }
 }

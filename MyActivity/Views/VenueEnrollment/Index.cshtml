@@ -1,0 +1,79 @@
+﻿@model IEnumerable<VenueEnrollment>
+<partial name ="_Notification" />
+
+<h2>Activity Venue</h2> <br />
+
+<div class="">
+    <a asp-controller ="VenueEnrollment" asp-action ="Create" class = "btn btn-primary">
+    Add Activity Venue
+</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a asp-controller ="Venue" asp-action ="Index" class = "btn btn-primary">
+    List of Venues
+</a>
+</div>
+<br />
+<br />
+
+
+
+<table table-bordered width = "100%">
+    <thead>
+        <tr>
+            <th>
+                
+            </th>
+            <th>
+                Activity
+            </th>
+            <th>
+                Venue
+            </th>
+             <th>
+                
+            </th>
+             <th>
+                
+            </th>
+                    
+        </tr>
+    </thead>
+    <tbody>
+     @foreach(var obj in Model)
+        {
+            <tr>
+                 <td width ="20">
+                  *
+               </td> 
+
+              
+                       <td width ="20">
+                        @obj.EmployeeActivity.ActivityName
+                      
+                        </td>
+                  
+                 
+                
+            
+            
+                <td width = "20%">
+                    @obj.Venue.StadiumName
+                </td>
+                
+
+                <td width = "20%">
+                   
+                    <a asp-controller = "ActivityEnrollment" asp-action ="Edit" asp-route-id ="@obj.Id" class ="btn btn-primary">Edit</a>
+                </td>
+                <td width = "20%">
+                   
+                    <a asp-controller = "ActivityEnrollment" asp-action ="Delete" asp-route-id ="@obj.Id" class ="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+         
+
+
+        }
+
+    </tbody>
+    </table>

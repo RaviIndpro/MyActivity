@@ -251,6 +251,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kittu/Desktop/GitIndpro/MyActivity/Views/VenueEnrollment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVFbnJvbGxtZW50XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kittu/Desktop/GitIndpro/MyActivity/Views/VenueEnrollment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVFbnJvbGxtZW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kittu/Desktop/GitIndpro/MyActivity/Views/Venue/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kittu/Desktop/GitIndpro/MyActivity/Views/Venue/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kittu/Desktop/GitIndpro/MyActivity/Views/Venue/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kittu/Desktop/GitIndpro/MyActivity/Views/Venue/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kittu/Desktop/GitIndpro/MyActivity/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

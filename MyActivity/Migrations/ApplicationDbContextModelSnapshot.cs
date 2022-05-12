@@ -234,17 +234,17 @@ namespace MyActivity.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("EmployeeActivityId")
-                        .HasColumnType("int");
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int>("EmployeeActivityId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeActivityId");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmployeeActivityId");
 
                     b.ToTable("ActivityEnrollments");
                 });
@@ -294,6 +294,46 @@ namespace MyActivity.Migrations
                     b.ToTable("EmployeeActivities");
                 });
 
+            modelBuilder.Entity("MyActivity.Models.Venue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("StadiumName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Venues");
+                });
+
+            modelBuilder.Entity("MyActivity.Models.VenueEnrollment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("EmployeeActivityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VenueId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeActivityId");
+
+                    b.HasIndex("VenueId");
+
+                    b.ToTable("VenueEnrollments");
+                });
+
             modelBuilder.Entity("MyActivity.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -301,6 +341,12 @@ namespace MyActivity.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -358,21 +404,38 @@ namespace MyActivity.Migrations
 
             modelBuilder.Entity("MyActivity.Models.ActivityEnrollment", b =>
                 {
+                    b.HasOne("MyActivity.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("MyActivity.Models.EmployeeActivity", "EmployeeActivity")
                         .WithMany()
                         .HasForeignKey("EmployeeActivityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyActivity.Models.Employee", "Employee")
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("EmployeeActivity");
+                });
+
+            modelBuilder.Entity("MyActivity.Models.VenueEnrollment", b =>
+                {
+                    b.HasOne("MyActivity.Models.EmployeeActivity", "EmployeeActivity")
                         .WithMany()
-                        .HasForeignKey("EmployeeId")
+                        .HasForeignKey("EmployeeActivityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Employee");
+                    b.HasOne("MyActivity.Models.Venue", "Venue")
+                        .WithMany()
+                        .HasForeignKey("VenueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("EmployeeActivity");
+
+                    b.Navigation("Venue");
                 });
 #pragma warning restore 612, 618
         }

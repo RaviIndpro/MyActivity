@@ -7,15 +7,15 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/User/GetAll"
+            "url": "Admin/User/GetAll"
         },
         "columns": [
             { "data": "name", "width": "15%" },
             { "data": "email", "width": "15%" },
             { "data": "phoneNumber", "width": "15%" },
             { "data": "role", "width": "15%" }
-            
-            
+
+
         ]
-    })
+    });
 }

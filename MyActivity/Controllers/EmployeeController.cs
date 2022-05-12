@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyActivity.Data;
 using MyActivity.Models;
@@ -24,14 +25,16 @@ namespace MyActivity.Controllers
 
         //}
 
-
+        [Authorize(Roles ="Admin")]
         public IActionResult Index()
         {
+           
            IEnumerable<Employee> objEmployeeList = _db.Employees;
             //_logger.LogInformation("Hi, test");
 
             //.Include("ActivityEnrollment").ToList();
             return View(objEmployeeList);
+
 
 
             //List<Employee> employees = _db.Employees.ToList();
