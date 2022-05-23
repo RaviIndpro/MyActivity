@@ -6,8 +6,7 @@
 <div class="">
     <a asp-controller ="VenueEnrollment" asp-action ="Create" class = "btn btn-primary">
     Add Activity Venue
-</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</a> &nbsp;&nbsp;&nbsp;&nbsp;
     <a asp-controller ="Venue" asp-action ="Index" class = "btn btn-primary">
     List of Venues
 </a>
@@ -63,11 +62,11 @@
 
                 <td width = "20%">
                    
-                    <a asp-controller = "ActivityEnrollment" asp-action ="Edit" asp-route-id ="@obj.Id" class ="btn btn-primary">Edit</a>
+                    <a asp-controller = "VenueEnrollment" asp-action ="Edit" asp-route-id ="@obj.Id" class ="btn btn-primary">Edit</a>
                 </td>
                 <td width = "20%">
                    
-                    <a asp-controller = "ActivityEnrollment" asp-action ="Delete" asp-route-id ="@obj.Id" class ="btn btn-danger">Delete</a>
+                    <a asp-controller = "VenueEnrollment" asp-action ="Delete" asp-route-id ="@obj.Id" class ="btn btn-danger">Delete</a>
                 </td>
             </tr>
          

@@ -36,6 +36,8 @@ namespace MyActivity.Controllers
             //        EmployeeName = d.Key,
             //        ActivityName = string.Join(", ", d.Select(e=>e.EmployeeActivity.ActivityName))
             //    });
+            var objEmployeeActivityList1 = _db.ActivityEnrollments.Include(x=>x.ApplicationUser).Include(x=>x.EmployeeActivity).Select(x=>x).ToList();
+           
 
             var objEmployeeActivityList = _db.ActivityEnrollments.Include(x => x.ApplicationUser).Include(x => x.EmployeeActivity)
                 .GroupBy(c => c.ApplicationUser.Name)

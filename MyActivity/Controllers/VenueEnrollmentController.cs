@@ -79,14 +79,14 @@ namespace MyActivity.Controllers
 
 
             //}
-            IEnumerable<SelectListItem> TypeDropDown = _db.Venues.Select(i => new SelectListItem
-            {
-                Text = i.StadiumName,
-                Value = i.Id.ToString()
-            });
-            IEnumerable<SelectListItem> TypeDropDown2 = _db.EmployeeActivities.Select(i => new SelectListItem
+            IEnumerable<SelectListItem> TypeDropDown = _db.EmployeeActivities.Select(i => new SelectListItem
             {
                 Text = i.ActivityName,
+                Value = i.Id.ToString()
+            });
+            IEnumerable<SelectListItem> TypeDropDown2 = _db.Venues.Select(i => new SelectListItem
+            {
+                Text = i.StadiumName,
                 Value = i.Id.ToString()
             });
 
@@ -94,6 +94,115 @@ namespace MyActivity.Controllers
             ViewBag.TypeDropDown2 = TypeDropDown2;
             return View(obj);
 
+
+        }
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            IEnumerable<SelectListItem> TypeDropDown = _db.EmployeeActivities.Select(i => new SelectListItem
+            {
+                Text = i.ActivityName,
+                Value = i.Id.ToString()
+            });
+            IEnumerable<SelectListItem> TypeDropDown2 = _db.Venues.Select(i => new SelectListItem
+            {
+                Text = i.StadiumName,
+                Value = i.Id.ToString()
+            });
+
+            ViewBag.TypeDropDown = TypeDropDown;
+            ViewBag.TypeDropDown2 = TypeDropDown2;
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var VenueEnrollmentFromDb = _db.VenueEnrollments.Find(id);
+            if (VenueEnrollmentFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(VenueEnrollmentFromDb);
+            //return View(ActivityEnrollmentFromDb);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(VenueEnrollment obj)
+        {
+            if (ModelState.IsValid)
+            {
+                //var count = _db.ActivityEnrollments.Where(x => x.EmployeeId == obj.EmployeeId).Count();
+                //if (count < 4)
+                //{
+                _db.VenueEnrollments.Update(obj);
+                _db.SaveChanges();
+                //}
+
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+
+        }
+        //GET
+        public IActionResult Delete(int? id)
+        {
+            IEnumerable<SelectListItem> TypeDropDown = _db.EmployeeActivities.Select(i => new SelectListItem
+            {
+                Text = i.ActivityName,
+                Value = i.Id.ToString()
+            });
+            IEnumerable<SelectListItem> TypeDropDown2 = _db.Venues.Select(i => new SelectListItem
+            {
+                Text = i.StadiumName,
+                Value = i.Id.ToString()
+            });
+
+            ViewBag.TypeDropDown = TypeDropDown;
+            ViewBag.TypeDropDown2 = TypeDropDown2;
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var VenueEnrollmentFromDb = _db.VenueEnrollments.Find(id);
+            if (VenueEnrollmentFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(VenueEnrollmentFromDb);
+
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    //var count = _db.ActivityEnrollments.Where(x => x.EmployeeId == obj.EmployeeId).Count();
+            //    //if (count < 4)
+            //    //{
+            //    //    _db.ActivityEnrollments.Update(obj);
+            //    //    _db.SaveChanges();
+            //    //}
+
+            //    return RedirectToAction("Index");
+            //}
+            //return View(obj);
+            var obj = _db.VenueEnrollments.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _db.VenueEnrollments.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
+            //return View(obj);
 
         }
     }

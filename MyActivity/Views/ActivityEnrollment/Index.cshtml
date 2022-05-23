@@ -1,6 +1,5 @@
-﻿@using MyActivity.ViewModel
-@*@model IEnumerable<ActivityEnrollment>
-*@@{
+﻿@model IEnumerable<ActivityEnrollment>
+@{
     ViewData["Title"] = "Index";
 }
 <partial name ="_Notification" />
@@ -43,14 +42,10 @@
                   *
                </td> 
 
-               @*
-                   if( r2 != Employee.FirstName)
-                   {*@
+              
                        <td width ="20">
                         @obj.EmployeeName
-                       @* var r2 = Employee.FirstName*@
                         </td>
-                  @* }*@
                  
                 
             

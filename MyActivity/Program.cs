@@ -47,6 +47,7 @@ if (!app.Environment.IsDevelopment())
 }
 else
 {
+    //app.UseStatusCodePagesWithRedirects("/Error");
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
@@ -55,7 +56,7 @@ else
     });
 }
 
-app.UseHttpsRedirection();
+ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

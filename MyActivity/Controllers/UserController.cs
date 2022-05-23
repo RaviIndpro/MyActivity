@@ -12,11 +12,14 @@ namespace MyActivity.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<ActivityEnrollmentController> _logger;
 
-        public UserController(ApplicationDbContext db,UserManager<IdentityUser> userManager)
+        public UserController(ApplicationDbContext db,UserManager<IdentityUser> userManager, ILogger<ActivityEnrollmentController> logger)
         {
             _db = db;
             _userManager = userManager;
+            _logger = logger;
+            _logger.LogDebug(1, "NLog injected Enrollments Controller");
         }
 
 

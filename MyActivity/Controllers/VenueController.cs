@@ -7,10 +7,14 @@ namespace MyActivity.Controllers
     public class VenueController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly ILogger<ActivityEnrollmentController> _logger;
 
-        public VenueController(ApplicationDbContext db)
+
+        public VenueController(ApplicationDbContext db, ILogger<ActivityEnrollmentController> logger)
         {
             _db = db;
+            _logger = logger;
+            _logger.LogDebug(1, "NLog injected Enrollments Controller");
         }
         public IActionResult Index()
         {
@@ -33,6 +37,8 @@ namespace MyActivity.Controllers
                 _db.Venues.Add(obj);
                 _db.SaveChanges();
                 TempData["success"] = "Activity Created Successfully";
+                _logger.LogInformation("Added a New Venue");
+
 
                 return RedirectToAction("Index");
             }
@@ -97,6 +103,8 @@ namespace MyActivity.Controllers
             _db.Venues.Remove(obj);
             _db.SaveChanges();
             TempData["success"] = "Activity deleted Successfully";
+            _logger.LogInformation("Deleted a venue");
+
 
             return RedirectToAction("Index");
 

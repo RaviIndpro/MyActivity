@@ -14,7 +14,7 @@ namespace MyActivity.Models
         public string RoleId { get; set; }
         [NotMapped]
         public string Role { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public int UserId { get; set; }
     }
 }

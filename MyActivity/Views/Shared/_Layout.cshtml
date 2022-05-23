@@ -30,24 +30,26 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         @if (SignInManager.IsSignedIn(User))
-{
+                      {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
                         </li>
-}
+                      }
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="EmployeeActivity" asp-action="Index">Activity</a>
                         </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ActivityEnrollment" asp-action="Index">Activity Enrollment</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ActivityEnrollment" asp-action="Index">Activity Enrollment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"  asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="VenueEnrollment" asp-action="Index">Venue Enrollment</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark"  asp-area="" asp-controller="User" asp-action="Index">Users</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="VenueEnrollment" asp-action="Index">Venue Enrollment</a>
-                        </li>
-
+                        }
                       
                       
 

@@ -10,6 +10,8 @@ namespace MyActivity.Models
         public int Id { get; set; }
         public int EmployeeActivityId { get; set; }
         //public int EmployeeId { get; set; }
+        //public int VenueEnrollmentId { get; set; }
+
         public string ApplicationUserId { get; set; }
         [NotMapped]
 
@@ -17,6 +19,9 @@ namespace MyActivity.Models
         [NotMapped]
 
         public string ActivityName { get; set; }
+        [NotMapped]
+
+       // public string VenueName { get; set; }
 
 
         [ForeignKey("EmployeeActivityId")]
@@ -24,11 +29,13 @@ namespace MyActivity.Models
 
         [ForeignKey("ApplicationUserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
+        //[ForeignKey("VenueEnrollmentId")]
+        //public virtual VenueEnrollment VenueEnrollment { get; set; }
 
 
 
         //[ForeignKey("EmployeeId")]
-       // [Remote("IsEmployeeExist", "ActivityEnrollmentController",ErrorMessage ="Employee already added")]
+        // [Remote("IsEmployeeExist", "ActivityEnrollmentController",ErrorMessage ="Employee already added")]
         //public virtual Employee Employee { get; set; }
 
     }
