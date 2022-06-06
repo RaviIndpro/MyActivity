@@ -79,20 +79,20 @@ namespace MyActivity.Controllers
 
 
             //}
-            IEnumerable<SelectListItem> TypeDropDown = _db.EmployeeActivities.Select(i => new SelectListItem
-            {
-                Text = i.ActivityName,
-                Value = i.Id.ToString()
-            });
-            IEnumerable<SelectListItem> TypeDropDown2 = _db.Venues.Select(i => new SelectListItem
-            {
-                Text = i.StadiumName,
-                Value = i.Id.ToString()
-            });
+            //IEnumerable<SelectListItem> TypeDropDown = _db.EmployeeActivities.Select(i => new SelectListItem
+            //{
+            //    Text = i.ActivityName,
+            //    Value = i.Id.ToString()
+            //});
+            //IEnumerable<SelectListItem> TypeDropDown2 = _db.Venues.Select(i => new SelectListItem
+            //{
+            //    Text = i.StadiumName,
+            //    Value = i.Id.ToString()
+            //});
 
-            ViewBag.TypeDropDown = TypeDropDown;
-            ViewBag.TypeDropDown2 = TypeDropDown2;
-            return View(obj);
+            //ViewBag.TypeDropDown = TypeDropDown;
+            //ViewBag.TypeDropDown2 = TypeDropDown2;
+            //return View(obj);
 
 
         }

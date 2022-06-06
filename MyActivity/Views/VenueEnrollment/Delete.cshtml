@@ -9,11 +9,14 @@
   
     <select asp-for ="EmployeeActivityId" asp-items ="@ViewBag.TypeDropDown">
            <option selected>--Select Employee Activity--</option>
-       </select>
+       </select><br /><br />
 
         <select asp-for ="VenueId" asp-items ="@ViewBag.TypeDropDown2">
            <option selected>--Select Activity Venue--</option>
-       </select>
+       </select><br /><br />
+       <label asp-for ="GameDate1"></label>
+   <input asp-for ="GameDate1" class ="form-control" />
+   <span asp-validation-for="GameDate1" class ="text-danger"></span><br />
        <br /><br />
 
    <button type ="submit" class= "btn btn-danger"

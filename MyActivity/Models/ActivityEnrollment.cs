@@ -19,7 +19,7 @@ namespace MyActivity.Models
         [NotMapped]
 
         public string ActivityName { get; set; }
-        [NotMapped]
+        //[NotMapped]
 
        // public string VenueName { get; set; }
 

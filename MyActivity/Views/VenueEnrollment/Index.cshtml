@@ -28,6 +28,7 @@
             <th>
                 Venue
             </th>
+            <th>Date</th>
              <th>
                 
             </th>
@@ -58,13 +59,16 @@
                 <td width = "20%">
                     @obj.Venue.StadiumName
                 </td>
+                 <td width = "20%">
+                    @obj.GameDate1
+                </td>
                 
 
-                <td width = "20%">
+                <td width = "10%">
                    
                     <a asp-controller = "VenueEnrollment" asp-action ="Edit" asp-route-id ="@obj.Id" class ="btn btn-primary">Edit</a>
                 </td>
-                <td width = "20%">
+                <td width = "10%">
                    
                     <a asp-controller = "VenueEnrollment" asp-action ="Delete" asp-route-id ="@obj.Id" class ="btn btn-danger">Delete</a>
                 </td>

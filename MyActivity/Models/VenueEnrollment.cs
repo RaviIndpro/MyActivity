@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyActivity.Models
@@ -13,6 +14,8 @@ namespace MyActivity.Models
         public virtual EmployeeActivity EmployeeActivity { get; set; }
         [ForeignKey("VenueId")]
         public virtual Venue Venue { get; set; }
+        [DisplayName("Date")]
+        public DateTime GameDate1 { get; set; }
 
     }
 }
