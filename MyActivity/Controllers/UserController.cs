@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyActivity.Data;
@@ -22,7 +23,7 @@ namespace MyActivity.Controllers
             _logger.LogDebug(1, "NLog injected Enrollments Controller");
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var userList = _db.ApplicationUsers.ToList();
