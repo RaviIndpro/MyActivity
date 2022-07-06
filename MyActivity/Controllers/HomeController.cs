@@ -29,6 +29,10 @@ namespace MyActivity.Controllers
         {
             return View();
         }
+        public IActionResult TestP()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
