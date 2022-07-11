@@ -292,6 +292,23 @@ namespace MyActivity.Controllers
             //return View(obj);
 
         }
+        public IActionResult ShowChart()
+        {
+            return View();
+        }
+        [HttpPost]
+        public List<object> GetChartData()
+        {
+            List<object> data = new List<object>();
+            List<string> labels = _db.EmployeeActivities.Select(x => x.ActivityName).ToList();
+            data.Add(labels);
+            List<int> NoOfEmployees = 1;
+            data.Add(NoOfEmployees);
+
+            var item = _db.ActivityEnrollments.Include(x => x.EmployeeActivity).ToList();
+            return View(item);
+        }
+
 
 
     }
