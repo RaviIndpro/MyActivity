@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[11.0.0, )"
             },
+            "Google.DataTable.Net.Wrapper": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.6, )"

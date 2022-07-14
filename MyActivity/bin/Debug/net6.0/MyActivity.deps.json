@@ -9,6 +9,7 @@
       "MyActivity/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Google.DataTable.Net.Wrapper": "4.1.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.6",
           "Microsoft.AspNetCore.Identity.UI": "6.0.6",
           "Microsoft.EntityFrameworkCore": "6.0.6",
@@ -58,6 +59,14 @@
         }
       },
       "chosen/1.2.0": {},
+      "Google.DataTable.Net.Wrapper/4.1.0": {
+        "runtime": {
+          "lib/net5.0/Google.DataTable.Net.Wrapper.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -2454,6 +2463,13 @@
       "sha512": "sha512-nrcF57kN5LRb/drcnK43W+cDKuAxDXhVlTBI4wOmm2eTjQW1/nRjV/G9zs+xavsgtquTH7CeJbYDbZZOsMrABw==",
       "path": "chosen/1.2.0",
       "hashPath": "chosen.1.2.0.nupkg.sha512"
+    },
+    "Google.DataTable.Net.Wrapper/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Dztq6kmia5EDou7xEAtm+yEFYQiso4fQrQ9c2V68p4TryEVdL46ipT+3jXN95HjTejHgC3DSHAVfalkdaYnSA==",
+      "path": "google.datatable.net.wrapper/4.1.0",
+      "hashPath": "google.datatable.net.wrapper.4.1.0.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

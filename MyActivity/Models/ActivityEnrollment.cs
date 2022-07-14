@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyActivity.ViewModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,6 +38,18 @@ namespace MyActivity.Models
         //[ForeignKey("EmployeeId")]
         // [Remote("IsEmployeeExist", "ActivityEnrollmentController",ErrorMessage ="Employee already added")]
         //public virtual Employee Employee { get; set; }
+        //[NotMapped]
+        //public List<string> ActivityNameList { get; set; }
+        [NotMapped]
+        public int ActivityCount { get; set; }
+        //public List<ActivityFlag> ActivityFlagList { get; set; }
 
+        //public class ActivityFlag
+        //{
+        //    [Key]
+        //    public int Id { get; set; }
+        //    public string ActName { get; set; }
+        //    public int FlagValue { get; set; }
+        //}
     }
 }

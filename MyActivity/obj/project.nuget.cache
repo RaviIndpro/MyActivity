@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XOdIBeRtnNLtstb146uhs4Q48IY4XG51vEUo9G4I6fwpX+XaLKfExV7oCGc3wlSOifkMBvrWHEmNUw8wQkgiDw==",
+  "dgSpecHash": "gaP4oWl6QIEus1wCPCkhuEm2hOax0DFSM/ufmF46HIaoOILPWzuwBKJjzkvjt7uzgUQs72PtSelY5EwzcZGA5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\kittu\\Desktop\\GitIndpro\\MyActivity\\MyActivity.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\kittu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\kittu\\.nuget\\packages\\bootstrap.chosen\\1.0.0\\bootstrap.chosen.1.0.0.nupkg.sha512",
     "C:\\Users\\kittu\\.nuget\\packages\\chosen\\1.2.0\\chosen.1.2.0.nupkg.sha512",
+    "C:\\Users\\kittu\\.nuget\\packages\\google.datatable.net.wrapper\\4.1.0\\google.datatable.net.wrapper.4.1.0.nupkg.sha512",
     "C:\\Users\\kittu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kittu\\.nuget\\packages\\jquery\\1.6.4\\jquery.1.6.4.nupkg.sha512",
     "C:\\Users\\kittu\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Google.DataTable.Net.Wrapper;
+using Google.DataTable.Net.Wrapper.Extension;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyActivity.Data;
 using MyActivity.Models;
 using MyActivity.ViewModel;
+using Newtonsoft.Json;
+using static MyActivity.Models.ActivityEnrollment;
+using static MyActivity.ViewModel.ActivityEnrollmentVM;
 
 namespace MyActivity.Controllers
 {
@@ -296,17 +301,106 @@ namespace MyActivity.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public List<object> GetChartData()
-        {
-            List<object> data = new List<object>();
-            List<string> labels = _db.EmployeeActivities.Select(x => x.ActivityName).ToList();
-            data.Add(labels);
-            List<int> NoOfEmployees = 1;
-            data.Add(NoOfEmployees);
 
-            var item = _db.ActivityEnrollments.Include(x => x.EmployeeActivity).ToList();
-            return View(item);
+        //public List<object> GetChartData()
+        //{
+        //    List<object> data = new List<object>();
+        //    List<string> labels = _db.EmployeeActivities.Select(x => x.ActivityName).ToList();
+        //    data.Add(labels);
+        //    List<int> NoOfEmployees = 1;
+        //    data.Add(NoOfEmployees);
+
+        //    var item = _db.ActivityEnrollments.Include(x => x.EmployeeActivity).ToList();
+        //    return View(item);
+        //}
+        //[HttpGet]
+        //public JsonResult ActivityChartData()
+        //{
+        //    var item = _db.ActivityEnrollments.Include(x => x.ApplicationUser).Include(x => x.EmployeeActivity);
+
+        //    var enrollmentGroupByEmployee = item.GroupBy(c => c.ApplicationUser.Name)
+        //    .Select(d => new ActivityEnrollment
+        //    {
+        //        EmployeeName = d.Key,
+        //        //ActivityNameList = e => e.EmployeeActivity.ActivityName.ToList(),
+        //        //ActivityFlagList = FlagMod(d.Select(g => g.ActivityName).ToList())
+        //        ActivityName = string.Join(", ", d.Select(e => e.EmployeeActivity.ActivityName)),
+
+        //        ActivityCount = d.Count()
+
+        //    });
+
+        //    //DataTable dt = (DataTable)JsonConvert.DeserializeObject(enrollmentGroupByEmployee, typeof(DataTable));
+
+        //    //return Json(enrollmentGroupByEmployee);
+        //    return Json(enrollmentGroupByEmployee);
+        //    //return View(Json(enrollmentGroupByEmployee));
+        //}
+
+
+
+        //public ActionResult OnGetChartData()
+        //{
+        //    var data2 = _db.ActivityEnrollments.Include(x => x.ApplicationUser).Include(x => x.EmployeeActivity);
+        //    var enrollmentGroupByEmployee2 = data2.GroupBy(c => c.ApplicationUser.Name)
+        //    .Select(d => new ActivityEnrollment
+        //    {
+        //        EmployeeName = d.Key,
+
+        //        ActivityName = string.Join(", ", d.Select(e => e.EmployeeActivity.ActivityName)),
+        //        ActivityCount = d.Count()
+
+        //    });
+
+        //    var json = enrollmentGroupByEmployee2.ToGoogleDataTable()
+        //            .NewColumn(new Column(ColumnType.String, "Employee"), x => x.EmployeeName)
+        //            .NewColumn(new Column(ColumnType.Number, "ActivityCount"), c => c.ActivityCount)
+        //            .Build()
+        //            .GetJson();
+
+        //    return Content(json);
+        //}
+        [HttpGet]
+
+        public JsonResult GetActivityChart()
+        {
+            var item4 = _db.ActivityEnrollments.Include(x => x.ApplicationUser).Include(x => x.EmployeeActivity).ToList();
+            
+
+            var enrollmentGroupByEmployee4 = item4.GroupBy(c => c.ApplicationUser.Name).Select(d => new ActivityEnrollmentVM
+            {
+                Employeename = d.Key,
+                //ActivityName = string.Join(", ", d.Select(e => e.EmployeeActivity.ActivityName)),
+                ActivityList = d.Select(e => e.EmployeeActivity.ActivityName).ToList(),
+                //ActivityName = d.Select(a=> a.) 
+                //ActivityList = d.Select(e => e.ActivityName).ToList(),
+                ActivityCount = d.Select(c=> c.EmployeeActivity.ActivityName).Count(),
+                ActivityCounterList = CountMod(d.Select(c=>c.EmployeeActivity.ActivityName).ToList())
+            });
+            return Json(enrollmentGroupByEmployee4);
+
+        }
+        public List<ActivityCounter> CountMod(List<string> enrolledActivity)
+        {
+            List<ActivityCounter> result = new List<ActivityCounter>();
+            var listOfActivity = _db.EmployeeActivities.Select(x => x.ActivityName).ToList();
+
+            foreach (var row in listOfActivity)
+            {
+                result.Add(new ActivityCounter { Name = row, Counter = 0 });
+            }
+            foreach (var row in result)
+            {
+                foreach (var col in enrolledActivity)
+                {
+                    if (row.Name == col)
+                    {
+                        row.Counter = 1;
+                        break;
+                    }
+                }
+            }
+            return result;
         }
 
 

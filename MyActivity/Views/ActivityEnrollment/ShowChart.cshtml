@@ -1,44 +1,90 @@
-﻿<input id="ID" value="Show Graph" type="button" />
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+﻿@*<div id="chart"></div>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section Scripts
+{
+    <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-<canvas id="myChart" width="100" height="100"></canvas>
-<script type="text/javascript">
-$(function() {
-    $("ID").click(function() {
-        $.ajax({
-            type: "POST",
-            url: "/ActivityEnrollment/GetChartData",
-            data: "",
-            contextType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: OnSuccessResult,
-            error: OnError
-        });
-        function OnSuccessResult(data) {
-            var _data = data;
-            var _chartLabels = _data[0];
-            var _chartData = _data[1];
+    <script type="text/javascript">
+           google.charts.load('current', {'packages':['corechart']});
+           google.charts.setOnLoadCallback(drawChart);
+               function drawChart() {
+                    var jsonData = $.ajax({
+                    url: "https://localhost:44334/ActivityEnrollment/OnGetChartData",
+                    dataType: "json",
+                    async: false
+                                    }).responseText;
+              var data = new google.visualization.DataTable(jsonData);
+              var options = {'title':'Employees',
+                     'width':600,
+                     'height':500};
 
-            var barColor=["red","green","blue","yellow","orange"]
-
-            new Chart("myChart",
-                {
-                    type: "bar",
-                    data: {
-                        labels: _chartLabels,
-                        datasets: [{
-                            backgroundColor: barColor,
-                            data: _chartData
-                        }]
-                    }
-                });
-        }
-        function OnError(err) {
-
-        }
-    })
-})
-
+              var chart = new google.visualization.PieChart(document.getElementById('OnGetChartData'));
+              chart.draw(data, options);
+              }
+ 
 </script>
+</head>
+<body>Hi</body>
+}*@
+
+                    <html>
+<head>
+    <center><h1>Employees Vs Activities</h1></center>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("GetActivityChart", "ActivityEnrollment")',
+                success: function (result) {
+                    google.charts.load('current', {'packages': ['corechart']});
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                }
+            });
+        });
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Employee Name');
+            var dataArray = [];
+            var column=true;
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.employeename, obj.activityCount]);
+                if(column)
+                {
+                    $.each(obj.activityCounterList , function(j,obj2) {
+                        data.addColumn('number', obj2.name);
+                    });
+                    column=false;
+                }
+            });
+            console.log(dataArray);
+            $.each(result, function (i, obj) {
+                dataArray=[];
+                dataArray.push(obj.employeename);
+                 $.each(obj.activityCounterList , function(j,obj2) {
+                        dataArray.push(parseInt(obj2.counter));
+                    });
+                    console.log(dataArray);
+                    data.addRow(dataArray);
+            });
+            var options = {
+                //bar:{groupWidth:'75%'},
+                isStacked: 'percent'
+            };
+            var columnChart = new google.visualization.ColumnChart(document.getElementById('viewchart'));
+            columnChart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <div id="viewchart"></div>
+</body>
+</html>

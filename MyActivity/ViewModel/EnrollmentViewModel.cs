@@ -5,14 +5,20 @@ namespace MyActivity.ViewModel
 {
     public class EnrollmentVM
     {
-        public int Id { get; set; }
-        public Employee Employee { get; set; }
-        public List<EmployeeActivity> ActivityList { get; set; }
-        public EmployeeActivity EmployeeActivity { get;  set; }
-        public ActivityEnrollment ActivityEnrollment { get; set; }
-        public IEnumerable<SelectListItem> TypeDropDown { get; set; }
-        public IEnumerable<SelectListItem> TypeDropDown2 { get; set; }
 
+        public ApplicationUser ApplicationUser { get; set; }             
+        public ActivityEnrollment ActivityEnrollment { get; set; }
+        public string Firstname { get; set; }
+        public string ActivityName { get; set; }
+        public int ActivityCount { get; set; }
+        public List<string> ActivityList { get; set; }
+        public List<ActivityCounter> ActivityCounterList { get; set; }
+
+        public class ActivityCounter
+        {
+            public string Name { get; set; }
+            public int Counter { get; set; }
+        }
 
 
     }
