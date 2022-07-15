@@ -4,8 +4,8 @@ namespace MyActivity.ViewModel
 {
     public class ActivityEnrollmentVM
     {
-        public ApplicationUser ApplicationUser { get; set; }
-        public ActivityEnrollment ActivityEnrollment { get; set; }
+        //public ApplicationUser ApplicationUser { get; set; }
+        //public ActivityEnrollment ActivityEnrollment { get; set; }
         public string Employeename { get; set; }
         public string ActivityName { get; set; }
         public int ActivityCount { get; set; }

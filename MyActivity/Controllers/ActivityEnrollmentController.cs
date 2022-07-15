@@ -371,16 +371,15 @@ namespace MyActivity.Controllers
             {
                 Employeename = d.Key,
                 //ActivityName = string.Join(", ", d.Select(e => e.EmployeeActivity.ActivityName)),
-                ActivityList = d.Select(e => e.EmployeeActivity.ActivityName).ToList(),
-                //ActivityName = d.Select(a=> a.) 
+                ActivityList = d.Select(e => e.EmployeeActivity.ActivityName).ToList(),                
                 //ActivityList = d.Select(e => e.ActivityName).ToList(),
                 ActivityCount = d.Select(c=> c.EmployeeActivity.ActivityName).Count(),
-                ActivityCounterList = CountMod(d.Select(c=>c.EmployeeActivity.ActivityName).ToList())
+                ActivityCounterList = ActivityListCount(d.Select(c=>c.EmployeeActivity.ActivityName).ToList())
             });
             return Json(enrollmentGroupByEmployee4);
 
         }
-        public List<ActivityCounter> CountMod(List<string> enrolledActivity)
+        public List<ActivityCounter> ActivityListCount(List<string> enrolledActivity)
         {
             List<ActivityCounter> result = new List<ActivityCounter>();
             var listOfActivity = _db.EmployeeActivities.Select(x => x.ActivityName).ToList();

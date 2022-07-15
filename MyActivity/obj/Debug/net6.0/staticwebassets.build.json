@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ODDnG/stNRfzbNLL4y3xMV9x5vdog+aVZDtVRrxCQ9s=",
+  "Hash": "RTZhgi9Gm+GHYQPQUhXkdl0vEv7CIEoKIUkaRpmRkZ4=",
   "Source": "MyActivity",
   "BasePath": "_content/MyActivity",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\kittu\\Desktop\\GitIndpro\\MyActivity\\wwwroot\\js\\jquery.min.js",
+      "SourceId": "MyActivity",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kittu\\Desktop\\GitIndpro\\MyActivity\\wwwroot\\",
+      "BasePath": "_content/MyActivity",
+      "RelativePath": "js/jquery.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery.min.js"
     },
     {
       "Identity": "C:\\Users\\kittu\\Desktop\\GitIndpro\\MyActivity\\wwwroot\\js\\site.js",

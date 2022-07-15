@@ -28,13 +28,13 @@
 <body>Hi</body>
 }*@
 
-                    <html>
-<head>
+                  
+
     <center><h1>Employees Vs Activities</h1></center>
     <link rel="stylesheet" type="text/css" href="index.css">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="~/js/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $.ajax({
@@ -56,7 +56,7 @@
             var dataArray = [];
             var column=true;
             $.each(result, function (i, obj) {
-                dataArray.push([obj.employeename, obj.activityCount]);
+                
                 if(column)
                 {
                     $.each(obj.activityCounterList , function(j,obj2) {
@@ -83,8 +83,6 @@
             columnChart.draw(data, options);
         }
     </script>
-</head>
-<body>
+
+
     <div id="viewchart"></div>
-</body>
-</html>
