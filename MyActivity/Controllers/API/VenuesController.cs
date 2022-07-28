@@ -47,7 +47,7 @@ namespace MyActivity.Controllers.API
         //public async Task<ActionResult<IEnumerable<VenueReadDto>>> Get()
         //{
         //    return await _context.Venues.ToListAsync();
-        //}
+        //}      
 
         // GET: api/Venues/5
         [HttpGet("{id}")]

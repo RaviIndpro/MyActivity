@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyActivity.Data;
 using MyActivity.Models;
+using MyActivity.ViewModel;
+using static MyActivity.ViewModel.ActivityEnrollmentVM;
+using static MyActivity.ViewModel.VenueEnrollmentVM;
 
 namespace MyActivity.Controllers
 {
@@ -204,6 +207,52 @@ namespace MyActivity.Controllers
 
             //return View(obj);
 
+        }
+        public IActionResult ShowVenueChart()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetVenueChart()
+        {
+            var item = _db.VenueEnrollments.Include(x => x.Venue).Include(x => x.EmployeeActivity).ToList();
+
+
+            var enrollmentGroupByEmployee4 = item.GroupBy(c => c.EmployeeActivity.ActivityName).Select(d => new VenueEnrollmentVM
+            {
+                ActivityName = d.Key,
+                //ActivityName = string.Join(", ", d.Select(e => e.EmployeeActivity.ActivityName)),
+                StadiumList = d.Select(e => e.Venue.StadiumName).ToList(),
+                //ActivityList = d.Select(e => e.ActivityName).ToList(),
+                //ActivityCount = d.Select(c => c.EmployeeActivity.ActivityName).Count(),
+                ActivityCounterList = ActivityListCount(d.Select(c => c.Venue.StadiumName).ToList())
+            });
+            return Json(enrollmentGroupByEmployee4);
+
+        }
+
+        public List<ActivityCounter2> ActivityListCount(List<string> enrolledActivity)
+        {
+            List<ActivityCounter2> result = new List<ActivityCounter2>();
+            var listOfStadium = _db.Venues.Select(x => x.StadiumName).ToList();
+
+            foreach (var row in listOfStadium)
+            {
+                result.Add(new ActivityCounter2 { Name = row, Counter = 0 });
+            }
+            foreach (var row in result)
+            {
+                foreach (var col in enrolledActivity)
+                {        
+                    if (row.Name == col)
+                    {
+                        row.Counter = 1;
+                        break;
+                    }
+                }
+            }
+            return result;
         }
     }
 }
