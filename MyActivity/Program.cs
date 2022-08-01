@@ -39,6 +39,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
+//app.MapGet("/", () => "Hello world");
+//app.MapGet("/Sum", (int? n1, int? n2) => n1 + n2);
 
 //Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -68,10 +70,10 @@ app.Use(async (context, next) =>
     }
 });
 
-                                       
-        
 
-    app.UseHttpsRedirection();
+
+
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -84,3 +86,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+public partial class Program { }

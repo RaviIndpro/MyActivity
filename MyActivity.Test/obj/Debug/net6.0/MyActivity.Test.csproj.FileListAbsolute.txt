@@ -647,3 +647,11 @@ C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\obj\Debug\net6.0\refint\MyActiv
 C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\obj\Debug\net6.0\MyActivity.Test.pdb
 C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\obj\Debug\net6.0\MyActivity.Test.genruntimeconfig.cache
 C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\obj\Debug\net6.0\ref\MyActivity.Test.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.runner.utility.netcoreapp10.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\FluentAssertions.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.abstractions.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.assert.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.core.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.execution.dotnet.dll

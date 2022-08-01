@@ -1,20 +1,36 @@
 using Microsoft.AspNetCore.Mvc.Testing;
+using Xunit;
 
 namespace MyActivity.Test
 {
-    [TestClass]
-    public class UnitTest1
+    public class BasicTests
+    : IClassFixture<WebApplicationFactory<Program>>
     {
-        [TestMethod]
-        public async void DefaultRoute_ReturnsHelloWorld()
+        private readonly WebApplicationFactory<Program> _factory;
+
+        public BasicTests(WebApplicationFactory<Program> factory)
         {
-            var webAppFactory = new WebApplicationFactory<Program>();
-            var httpClient = webAppFactory.CreateDefaultClient();
+            _factory = factory;
+        }
 
-            var response = await httpClient.GetAsync("");
-            var stringResult = await response.Content.ReadAsStringAsync();
+        [Theory]
+        [InlineData("/")]
+        [InlineData("/Index")]
+        [InlineData("/About")]
+        [InlineData("/Privacy")]
+        [InlineData("/Contact")]
+        public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
+        {
+            // Arrange
+            var client = _factory.CreateClient();
 
-            Assert.AreEqual("Hello World!", stringResult);
+            // Act
+            var response = await client.GetAsync("/API/Venues");
+
+            // Assert
+            response.EnsureSuccessStatusCode(); // Status Code 200-299
+            Xunit.Assert.Equal("text/html; charset=utf-8",
+                response.Content.Headers.ContentType.ToString());
         }
     }
 }
