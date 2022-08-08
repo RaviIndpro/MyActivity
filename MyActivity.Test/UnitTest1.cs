@@ -13,13 +13,13 @@ namespace MyActivity.Test
             _factory = factory;
         }
 
-        [Theory]
-        [InlineData("/")]
-        [InlineData("/Index")]
-        [InlineData("/About")]
-        [InlineData("/Privacy")]
-        [InlineData("/Contact")]
-        public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
+        //[Theory]
+        //[InlineData("/")]
+        //[InlineData("/Index")]
+        //[InlineData("/About")]
+        //[InlineData("/Privacy")]
+        //[InlineData("/Contact")]
+        public async Task Get_EndpointsReturnSuccessAndCorrectContentType()
         {
             // Arrange
             var client = _factory.CreateClient();

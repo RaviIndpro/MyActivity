@@ -655,3 +655,7 @@ C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.abstract
 C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.assert.dll
 C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.core.dll
 C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\xunit.execution.dotnet.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\AngleSharp.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\kittu\Desktop\GitIndpro\MyActivity.Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
